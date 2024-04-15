@@ -7,6 +7,14 @@ const productService = {
         return result;
        },
 
+    async upload(code, data) {
+    
+    const result = await db.products.update({sales_price: Number(data.new_price)}, { where: { code } });
+    console.log(result);
+    return result;
+
+    }
+
 };
 
 module.exports = productService;
