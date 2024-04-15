@@ -1,0 +1,10 @@
+# Arquivos de dependências
+node_modules/
+
+# Arquivos de build
+build/
+dist/
+
+
+# Arquivo de configuração de ambiente
+.env
