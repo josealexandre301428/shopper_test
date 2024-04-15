@@ -23,8 +23,14 @@ const products = (sequelize, DataTypes) => {
   });
 
   // Define a associação com a tabela packs
-  product.hasMany(Pack, { foreignKey: 'pack_id', as: 'packProducts' });
-  product.hasMany(Pack, { foreignKey: 'product_id', as: 'productsInPacks' });
+  product.associate = (models) => {
+    product.hasMany(models.Infos, {
+      foreignKey: 'pack_id', as: 'packProduct'
+    });
+    product.hasMany(models.Infos, {
+      foreignKey: 'product_id', as: 'productsInPacks'
+    });
+  }
 
   return product;
 };

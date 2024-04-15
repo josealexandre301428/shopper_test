@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "jose",
+    "password": "jose",
+    "database": "shopper",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "jose",
+    "password": "jose",
+    "database": "shopper",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "jose",
+    "password": "jose",
+    "database": "shopper",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}

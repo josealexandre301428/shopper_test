@@ -23,8 +23,14 @@ const packs = (sequelize, DataTypes) => {
   });
 
   // Definindo as associações com a tabela Product
-  Pack.belongsTo(sequelize.models.products, { foreignKey: 'pack_id', as: 'packProduct' });
-  Pack.belongsTo(sequelize.models.products, { foreignKey: 'product_id', as: 'productInPack' });
+  Pack.associate = (models) => {
+    Pack.belongsTo(models.products, {
+      foreignKey: 'pack_id', as: 'packProduct'
+    });
+    Pack.belongsTo(models.products, {
+      foreignKey: 'product_id', as: 'productInPack'
+    });
+  }
 
   return Pack;
 };
