@@ -1,5 +1,5 @@
 const packs = (sequelize, DataTypes) => {
-  const Pack = sequelize.define('packs', {
+  const Packs = sequelize.define('packs', {
     id: {
       autoIncrement: true,
       primaryKey: true,
@@ -23,16 +23,16 @@ const packs = (sequelize, DataTypes) => {
   });
 
   // Definindo as associações com a tabela Product
-  Pack.associate = (models) => {
-    Pack.belongsTo(models.products, {
+  Packs.associate = (models) => {
+    Packs.belongsTo(models.products, {
       foreignKey: 'pack_id', as: 'packProduct'
     });
-    Pack.belongsTo(models.products, {
+    Packs.belongsTo(models.products, {
       foreignKey: 'product_id', as: 'productInPack'
     });
   }
 
-  return Pack;
+  return Packs;
 };
 
 module.exports = packs;
