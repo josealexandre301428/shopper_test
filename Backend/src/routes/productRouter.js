@@ -12,6 +12,6 @@ productsRouter.post('/create', productsController.create);
 //READ
 productsRouter.get('/products', productsController.read);
 // UPDATE
-productsRouter.put('/upload', upload.single('csvFile'), productsController.upload);
+productsRouter.put('/upload', productsController.upload);
 
 module.exports = productsRouter;

@@ -1,5 +1,4 @@
 const productService = require('../services/productServices');
-const { readCsv, validCsv } = require('../middlewares/csvHandler');
 
 const productsControler = {
 
@@ -21,22 +20,20 @@ const productsControler = {
       },
 
       async upload(req, res) {
+        console.log(req.body);
         try {
-          const errorProducts = [];
-          const base = await productService.read();
-          const data = await readCsv(req.file.path);
-          const result = validCsv(base, data);
-          result.map((product) => { if(product.message) errorProducts.push(product)}); 
-          if(errorProducts.length > 0) return res.json({errorProducts});
-
-          result.map(async (product) => await productService.upload(product.code, product)); 
-
-          return res.json(result);
-        } catch (error) {
+          const promises = req.body.map(async (product) => {
+              return await productService.upload(product.code, product);
+          });
+  
+          const response = await Promise.all(promises);
+  
+          return res.json(response);
+      } catch (error) {
           return error.status
-            ? res.status(error.status).json({error: error.status, message: error.message })
-            : res.status(500).json({error: error.status, message: error.message });
-        }
+              ? res.status(error.status).json({ error: error.status, message: error.message })
+              : res.status(500).json({ error: error.status, message: error.message });
+      }
       },
 
 };
