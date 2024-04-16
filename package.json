@@ -1,0 +1,24 @@
+{
+  "name": "shopper_test",
+  "version": "1.0.0",
+  "description": "Teste tecnico Shopper",
+  "main": "index.js",
+  "scripts": {
+
+    "stop": "(pm2 stop all && pm2 delete all) | grep 'PM2'",
+    "dev": "./scripts/prepare-for-dev.sh",
+    "dev:prestart": "./scripts/prestart-dev.sh",
+    "db:reset": "./scripts/reset-db-dev.sh",
+    "db:reset:debug": "./scripts/reset-db-dev-debug.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josealexandre301428/shopper_test.git"
+  },
+  "author": "José AAlexandre",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/josealexandre301428/shopper_test/issues"
+  },
+  "homepage": "https://github.com/josealexandre301428/shopper_test#readme"
+}
