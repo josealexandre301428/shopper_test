@@ -54,7 +54,7 @@ São os scripts da raiz do projeto (./package.json) e não das aplicações indi
     - uso (na raiz do projeto): `npm run db:reset`
 # Funcionalidades do Sistema
     -Stack utilizada:
-        -Frontend: React, tAILWIND, axios.
+        -Frontend: React, Tailwind, axios.
         -Backend: Node, Express, cors, Sequelize, MySql8.
 
 
