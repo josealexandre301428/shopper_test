@@ -57,15 +57,20 @@ export default function UpdateProducts() {
 
     return (
         <div>
-            <h2 className='text-center'>Upload de Arquivo CSV:</h2>
-            <div className="flex gap-2">
+            <h2 className='mb-4 mt-4 text-4xl text-center font-extrabold leading-none tracking-tight text-black lg:text-6xl'>Atualização de Produtos</h2>
+            <div className="flex container mb-3 mx-auto justify-center grid grid-cols-1 gap-1">
+                <label
+                    htmlFor="formFile"
+                    className="mb-2 inline-block text-neutral-500"
+                >Faça o Upload do Arquivo:
+                </label>
                 <input
-                    id="csvFile"
+                    className="relative m-0 block w-full min-w-0 flex-auto cursor-pointer rounded border border-solid border-secondary-500 bg-transparent bg-clip-padding px-3 py-[0.32rem] text-base font-normal text-surface transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:me-3 file:cursor-pointer file:overflow-hidden file:rounded-none file:border-0 file:border-e file:border-solid file:border-inherit file:bg-transparent file:px-3  file:py-[0.32rem] file:text-surface focus:border-primary focus:text-gray-700 focus:shadow-inset focus:outline-none"
                     type="file"
-                    accept=".csv"
-                    className="mt-2 block w-full text-sm file:mr-4 file:rounded-md file:border-0 file:bg-green-700 file:py-2 file:px-4 file:text-sm file:font-semibold file:text-white hover:file:bg-green-800 focus:outline-none disabled:pointer-events-none disabled:opacity-60"
-                    onChange={handleFileChange}
-                />
+                    id="formFile"
+                    onChange={handleFileChange}/>
+            </div>
+            <div className="flex container mx-auto justify-center">
                 <button 
                     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                     onClick={() => handleButton(selectedFile)}
@@ -84,7 +89,6 @@ export default function UpdateProducts() {
                         Upload
                     </button>
                 ) }
-                
             </div>
             {fileNan && (<h1>Arquivo não carregado</h1>)}
             {error && (
