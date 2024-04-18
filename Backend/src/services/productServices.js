@@ -19,7 +19,14 @@ const productService = {
     const result = await db.products.update({sales_price: Number(data.new_price)}, { where: { code } });
     return result;
 
-    }
+    },
+
+    async updatePacks(code, sales_price) {
+      console.log(code, sales_price);
+      const result = await db.products.update({sales_price}, { where: { code } });
+      return result;
+  
+      }
 
 };
 module.exports = productService;

@@ -65,11 +65,23 @@ export default function UpdateProducts() {
         if (selectedFile) {
             try {
                 const csvData = await readCsv(selectedFile);
-                havePacks(base, csvData, packs);
-                const response = await api.put('/upload', productsOk);
+                const packsContent = await havePacks(base, csvData, packs); 
+                const putPackRequests = [];
+    
+                
+                packsContent.forEach(async (productsArray, code) => {
+                    const totalValueDoPacote = productsArray.totalValue;
+                    putPackRequests.push(api.put('/upload/packs', { code, sales_price: totalValueDoPacote }));
+                });
+    
+                await Promise.all(putPackRequests);
+    
+                await api.put('/upload', productsOk);
                 setSuccess(true);
+                window.location.reload();
             } catch (error) {
                 setError(true);
+                console.log(error);
             }
         }
     };

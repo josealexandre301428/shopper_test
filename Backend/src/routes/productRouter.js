@@ -14,5 +14,6 @@ productsRouter.get('/products', productsController.read);
 productsRouter.get('/products/packs', productsController.readPacks);
 // UPDATE
 productsRouter.put('/upload', productsController.upload);
+productsRouter.put('/upload/packs', productsController.updatePacks);
 
 module.exports = productsRouter;
