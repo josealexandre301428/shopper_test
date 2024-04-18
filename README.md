@@ -37,6 +37,8 @@ Este é um projeto que visa criar um sistema com capacidade de validação e atu
 
 Para o banco de dados, utilizaremos o ORM Sequelize, que fará interface com o MySQL8.
 
+1 - Entre no arquivo .env e altere as variaveis de acordo com seu usuario e senha mysql.
+
 ## Scripts relevantes do package.json
 
 São os scripts da raiz do projeto (./package.json) e não das aplicações individuais ./front-end/package.json e ./back-end/package.json:
