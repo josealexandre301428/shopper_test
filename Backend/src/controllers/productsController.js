@@ -19,6 +19,18 @@ const productsControler = {
         }
       },
 
+      async readPacks(req, res) {
+        try {
+          const response = await productService.readPacks(req, res);
+    
+          return res.status(201).json(response);
+        } catch (error) {
+          return error.status
+            ? res.status(error.status).json({error: error.status, message: error.message })
+            : res.status(500).json({error: error.status ,message: error.message });
+        }
+      },
+
       async upload(req, res) {
         console.log(req.body);
         try {

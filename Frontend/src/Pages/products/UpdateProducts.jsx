@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import api from "../../services/Api";
 import { validCsv, readCsv } from '../../services/validateFile';
+import { havePacks } from '../../services/handlePacks';
 
 export default function UpdateProducts() {
-    const [ base, setBase] = useState([])
+    const [base, setBase] = useState([]);
+    const [packs, setPacks] =useState([]);
     const [selectedFile, setSelectedFile] = useState(null);
     const [fileNan, setFileNan] = useState(false);
     const [productsOk, setProductsOk] = useState([]);
@@ -16,6 +18,8 @@ export default function UpdateProducts() {
     const fetch = async () => { 
         try {
             const products =  await api.get('/products');
+            const pack =  await api.get('/products/packs');
+            setPacks(pack.data);
             setBase(products.data);
         } catch (error) {
             setError(true);
@@ -49,7 +53,6 @@ export default function UpdateProducts() {
                 } else {
                     const validProducts = validationResult.products;
                     setProductsOk(validProducts);
-                    console.log(validProducts);
                     setDisable(false);
                 }
             } catch (error) {
@@ -61,8 +64,9 @@ export default function UpdateProducts() {
     const handleUpload = async () => {
         if (selectedFile) {
             try {
+                const csvData = await readCsv(selectedFile);
+                havePacks(base, csvData, packs);
                 const response = await api.put('/upload', productsOk);
-                console.log(response);
                 setSuccess(true);
             } catch (error) {
                 setError(true);

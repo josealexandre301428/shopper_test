@@ -11,6 +11,7 @@ const productsRouter = Router();
 productsRouter.post('/create', productsController.create);
 //READ
 productsRouter.get('/products', productsController.read);
+productsRouter.get('/products/packs', productsController.readPacks);
 // UPDATE
 productsRouter.put('/upload', productsController.upload);
 
